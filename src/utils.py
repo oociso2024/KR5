@@ -6,7 +6,7 @@ import API_classes
 
 
 def all_vacancies(path_companies):
-    '''Получает список вакансии всех компаний записанных в файле "path_companies"'''
+    """Получает список вакансии всех компаний записанных в файле 'path_companies' """
     with open(path_companies, 'r', encoding='UTF-8') as f:
         all_companies = json.load(f)
         vacancy_hh_all = []
@@ -17,17 +17,17 @@ def all_vacancies(path_companies):
     return vacancy_hh_all
 
 def create_database():
-    '''Создает базу данных с таблицами и заполняет их'''
+    """Создает базу данных с таблицами и заполняет их"""
     db = CREATE_DB()
     db.create_database()
-    with open(PATH_COMPANY, 'r', encoding = "utf-8") as comp:
+    with open(PATH_COMPANY, 'r', encoding="utf-8") as comp:
         data_for_company = json.load(comp)
     db.filling_table(data_for_company, 'companies')
     data_for_vacancy = all_vacancies(PATH_COMPANY)
     db.filling_table(data_for_vacancy, 'vacancies')
 
 def users_work():
-    '''Функция для работы с пользователем'''
+    """Функция для работы с пользователем"""
 
     while True:
         exempl_db = DBManager()

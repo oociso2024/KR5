@@ -2,7 +2,7 @@ import psycopg2
 from data.config import PARAMS_BD
 
 class CREATE_DB():
-    '''Класс для создания и наполнения базы данных и таблиц в ней'''
+    """Класс для создания и наполнения базы данных и таблиц в ней"""
     def __init__(self) -> None:
         self.params = PARAMS_BD
         self.database_name = 'vacansies_hh'
@@ -11,7 +11,8 @@ class CREATE_DB():
         return ("Класс для создания и наполнения базы данных и таблиц в ней")
 
     def create_database(self):
-        """Создание базы данных и таблиц для сохранения данных о каналах и видео."""
+        """Создание базы данных (проверка подключения и удаление всех данныз из ранее созданной)
+          и таблиц для сохранения данных о компаниях и вакансиях"""
 
         conn = psycopg2.connect(dbname='postgres', **self.params)
 
@@ -39,7 +40,7 @@ class CREATE_DB():
         conn.close()
 
     def filling_table(self, data_for_table, table_name):
-        '''Наполняет таблицу данными из json файла'''
+        """Наполняет таблицу данными из json файла"""
         conn = psycopg2.connect(dbname=self.database_name, **self.params)
         with conn.cursor() as cur:
             for line in data_for_table:

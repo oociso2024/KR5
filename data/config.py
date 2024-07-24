@@ -12,15 +12,18 @@ PATH_FILE_DB = Path(__file__).parent.joinpath("database.ini")
 
 HH_VACANCIES_URL = "https://api.hh.ru/vacancies"
 # Базовый URL для сайта HH.ru
-HH_HEADERS = {"User-Agent": "naumesku@gmail.com"}
+
+HH_HEADERS = {"User-Agent": "oociso@ya.ru"}
 # Заголовок для сайта HH.ru - обязательное требование
+
 COUNT_HH = 100
-#Количество вакансий для поиска на 1 странице сайта HH.ru
+# Количество вакансий для поиска на 1 странице сайта HH.ru
+
 PAGES = 3
-#Количество cтраниц сайта HH.ru для парсинга
+# Количество cтраниц сайта HH.ru для парсинга
 
 def config_params(filename, section="postgresql"):
-    # функция для формирования параметров, необходимых для создания базы данных
+    """функция для формирования параметров, необходимых для создания базы данных"""
     parser = ConfigParser()
     # read config file
     parser.read(filename)
